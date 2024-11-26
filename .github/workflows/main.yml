@@ -35,10 +35,12 @@ jobs:
       - name: Install Micromamba
         run: |
           curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj -C /usr/local/bin/ --strip-components=1 bin/micromamba
-          eval "$(./bin/micromamba shell hook -s posix)"
-          source ~/.bashrc
+          # eval "$(./bin/micromamba shell hook -s posix)"
+          eval "$(micromamba shell hook --shell bash)"
+          # source ~/.bashrc
           micromamba create -y -n test_env -c conda-forge python=3.9 omero-py rdflib requests pytest
-          micromamba activate test_env
+          eval "$(micromamba shell hook --shell bash)" && micromamba activate test_env
+          # micromamba activate test_env
           echo "omero-py, rdflib, pytest, and requests installed successfully"
       - name: Test
         run: |

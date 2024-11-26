@@ -35,7 +35,7 @@ jobs:
       - name: Install Micromamba
         run: |
           curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj -C /usr/local/bin/ --strip-components=1 bin/micromamba
-          micromamba shell init -s bash -p ~/micromamba
+          eval "$(./bin/micromamba shell hook -s posix)"
           source ~/.bashrc
           micromamba create -y -n test_env -c conda-forge python=3.9 omero-py rdflib requests pytest
           micromamba activate test_env

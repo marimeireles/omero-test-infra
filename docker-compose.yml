@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   db:
     image: ${POSTGRES_IMAGE}:${POSTGRES_VERSION}
@@ -7,11 +5,11 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD", "pg_isready", "-U", "postgres"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
 
   omero:
     build:
@@ -44,11 +42,11 @@ services:
     # depends_on:
     #   omero:
     #     condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:4080"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://127.0.0.1:4080"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
 
   ontop:
     build:
@@ -60,11 +58,11 @@ services:
       - ONTOP_DB_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "8080:8080"
-    depends_on:
-      db:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8080"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5

@@ -7,6 +7,9 @@ RUN dnf install -y -q \
     dnf clean all
 RUN echo "Omero server is running. 🐖🪽"
 
+RUN echo '🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸'
+RUN pwd
+RUN echo '🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸'
 COPY ontop-test/insert_data.sh /opt/ontop-test/insert_data.sh
 RUN chmod +x /opt/ontop-test/insert_data.sh
 RUN /opt/ontop-test/insert_data.sh

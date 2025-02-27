@@ -21,7 +21,7 @@ RUN wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest \
 
 COPY insert_data.sh /opt/insert_data.sh
 RUN chmod +x /opt/insert_data.sh
-RUN micromamba run -n test_env /opt/insert_data.sh
+RUN OMERO_ALLOW_RUN_AS_ROOT=1 micromamba run -n test_env /opt/insert_data.sh
 
 CMD tail -f /var/log/omero/Blitz-0.log
 USER omero-server

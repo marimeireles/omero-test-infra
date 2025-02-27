@@ -7,12 +7,9 @@ RUN dnf install -y -q \
     dnf clean all
 RUN echo "Omero server is running. 🐖🪽"
 
-# Install necessary packages
-RUN apt-get update && apt-get install -y \
-    curl \
-    bzip2 \
-    bash \
-    && rm -rf /var/lib/apt/lists/*
+RUN dnf update -y && \
+    dnf install -y curl bzip2 bash && \
+    dnf clean all
 
 RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
 | tar -xvj -C /usr/local/bin/ --strip-components=1 bin/micromamba && \

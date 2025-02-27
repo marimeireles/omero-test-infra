@@ -7,6 +7,11 @@ RUN dnf install -y -q \
     dnf clean all
 RUN echo "Omero server is running. 🐖🪽"
 
+RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj -C /usr/local/bin/ --strip-components=1 bin/micromamba
+RUN eval "$(micromamba shell hook --shell bash)"
+RUN micromamba create -y -n test_env -c conda-forge python=3.9 omero-py rdflib requests pytest
+RUN eval "$(micromamba shell hook --shell bash)" && micromamba activate test_env
+RUN echo "omero-py, rdflib, pytest, and requests installed successfully"
 COPY insert_data.sh /opt/insert_data.sh
 RUN chmod +x /opt/insert_data.sh
 RUN /opt/insert_data.sh

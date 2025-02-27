@@ -8,7 +8,7 @@ RUN dnf install -y -q \
 RUN echo "Omero server is running. 🐖🪽"
 
 COPY insert_data.sh /opt/insert_data.sh
-RUN chmod +x /op/insert_data.sh
+RUN chmod +x /opt/insert_data.sh
 RUN /opt/insert_data.sh
 
 CMD tail -f /var/log/omero/Blitz-0.log

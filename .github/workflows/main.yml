@@ -42,8 +42,7 @@ jobs:
           eval "$(micromamba shell hook --shell bash)" && micromamba activate test_env
           # micromamba activate test_env
           echo "omero-py, rdflib, pytest, and requests installed successfully"
-      - name: Test
-        run: |
+          echo "Running tests"
           chmod +x ontop-test/test_infra_ontop/entrypoint.sh  ontop-test/test_infra_ontop/test_endpoint.py  ontop-test/test_infra_ontop/insert_data.sh
           bash ontop-test/test_infra_ontop/entrypoint.sh
       - name: Tear down

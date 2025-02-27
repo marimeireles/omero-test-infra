@@ -8,4 +8,4 @@
 # curl -v http://localhost:8080 || echo "❌ localhost:8080 is not reachable"
 
 # Run the scripts
-ontop-test/test_infra_ontop/insert_data.sh && python ontop-test/test_infra_ontop/test_endpoint.py
+python ontop-test/test_infra_ontop/test_endpoint.py

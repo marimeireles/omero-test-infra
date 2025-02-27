@@ -6,5 +6,10 @@ RUN dnf install -y -q \
     git && \
     dnf clean all
 RUN echo "Omero server is running. 🐖🪽"
+
+COPY ontop-test/insert_data.sh /opt/ontop-test/insert_data.sh
+RUN chmod +x /opt/ontop-test/insert_data.sh
+RUN /opt/ontop-test/insert_data.sh
+
 CMD tail -f /var/log/omero/Blitz-0.log
 USER omero-server

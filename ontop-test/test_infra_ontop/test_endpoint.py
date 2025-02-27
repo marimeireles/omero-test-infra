@@ -7,11 +7,11 @@ from urllib import parse
 
 import unittest
 
-ENDPOINT = "http://0.0.0.0:8080/sparql"
+ENDPOINT = "http://localhost:8080/sparql"
 
 # Check if endpoint is reachable.
 try:
-    response = requests.get("/".join(os.path.split(ENDPOINT)[:-1]))
+    response = requests.get("http://localhost:8080")
     if response.status_code != 200:
         raise RuntimeError(
             f"Could not connect to ontop endpoint {ENDPOINT}. Status code: {response.status_code}"

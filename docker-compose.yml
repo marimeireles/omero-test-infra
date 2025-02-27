@@ -13,7 +13,8 @@ services:
 
   omero:
     build:
-      context: ./omeroserver
+      context: .
+      dockerfile: omeroserver/Dockerfile
       args:
         - OMEROSERVER_BASE_IMAGE=${OMERO_SERVER_IMAGE}:${OMERO_SERVER_VERSION}
     environment:
